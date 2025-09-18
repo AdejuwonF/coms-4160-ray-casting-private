@@ -10,7 +10,25 @@ bool first_hit(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  return false;
+
+  bool has_hit = false;
+  t = INFINITY;
+
+  double temp_t;
+  Eigen::Vector3d temp_n;
+
+  for (int i = 0; i < objects.size(); i++){
+    auto object = objects[i];
+    if (object->intersect(ray, min_t, temp_t, temp_n)){
+      has_hit = true;
+      if (temp_t < t){
+        t = temp_t;
+        n = n;
+        hit_id = i;
+      }
+    }
+  }
+  return has_hit;
   ////////////////////////////////////////////////////////////////////////////
 }
 
