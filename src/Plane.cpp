@@ -6,7 +6,13 @@ bool Plane::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  return false;
+  double denom = ray.direction.dot(normal);
+  if (denom == 0) { // orthagonal
+    return false;
+  }
+  t = (point - ray.origin).dot(normal) / denom;
+  n = normal;
+  return t >= min_t;
   ////////////////////////////////////////////////////////////////////////////
 }
 
