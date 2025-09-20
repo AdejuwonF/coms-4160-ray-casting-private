@@ -23,7 +23,7 @@ bool first_hit(
       has_hit = true;
       if (temp_t < t){
         t = temp_t;
-        n = n;
+        n = temp_n;
         hit_id = i;
       }
     }

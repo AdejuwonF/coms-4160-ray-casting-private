@@ -23,8 +23,6 @@ void viewing_ray(
 
   Eigen::Vector3d pixel_position = image_top_left_corner - 
         (i*pixel_height + pixel_height/2.0)*camera.v + (j*pixel_width + pixel_width/2.0)*camera.u;
-  std::cout << pixel_position;
-
   ray.origin = camera.e;
   ray.direction = pixel_position - camera.e;
   ////////////////////////////////////////////////////////////////////////////
