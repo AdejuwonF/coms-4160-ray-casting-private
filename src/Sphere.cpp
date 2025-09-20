@@ -15,13 +15,13 @@ bool Sphere::intersect(
     double discriminnant_root = sqrt(discriminant);
     // Use min
     double t1 = (-ray.direction.dot(center_to_ray) + discriminnant_root) / ray.direction.dot(ray.direction);
-    double t2 = (-ray.direction.dot(center_to_ray) + discriminnant_root) / ray.direction.dot(ray.direction);
-    if (t1 < min_t && t2 < min_t){
-      return false;
-    }
+    double t2 = (-ray.direction.dot(center_to_ray) - discriminnant_root) / ray.direction.dot(ray.direction);
     t1 = t1 >= min_t ? t1 : INFINITY;
     t2 = t2 >= min_t ? t2 : INFINITY;
     t = std::min(t1, t2);
+    if (t == INFINITY){
+      return false;
+    }
     Eigen::Vector3d intersect = ray.origin + ray.direction*t;
     n = (intersect - center) / radius;
     return true;
